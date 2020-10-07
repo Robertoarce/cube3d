@@ -6,7 +6,7 @@
 #    By: rarce <rarce@42.student.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/30 15:38:36 by rarce             #+#    #+#              #
-#    Updated: 2020/10/05 13:37:13 by titorium         ###   ########.fr        #
+#    Updated: 2020/10/05 17:25:51 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRCS += ft_itoa.c
 SRCS += ft_strmapi.c
 
 
+SRCS += ft_findc.c
 SRCS += ft_strnew2.c
 SRCS += ft_append.c
 SRCS += ft_str2free.c

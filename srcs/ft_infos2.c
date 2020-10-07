@@ -6,13 +6,12 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 12:56:49 by titorium          #+#    #+#             */
-/*   Updated: 2020/09/29 17:55:51 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/07 17:18:12 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cublib.h"
-
 
 int			ft_add_r(char **split, int slots, t_data *data)
 {
@@ -37,8 +36,7 @@ int			ft_add_r(char **split, int slots, t_data *data)
 	}
 	if (buton == -1)
 	{
-		ft_error("\ninvalid input on R\n");
-		return (-1);
+		return (ft_error("\ninvalid input on R\n"));
 	}
 	return (0);
 }

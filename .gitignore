@@ -2,3 +2,5 @@ a.out
 ./src/test/*
 *.swp
 /mini*
+*.gch
+*.o

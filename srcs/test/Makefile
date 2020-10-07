@@ -6,23 +6,50 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/05 13:57:48 by titorium          #+#    #+#              #
-#    Updated: 2020/10/05 16:13:10 by titorium         ###   ########.fr        #
+#    Updated: 2020/10/06 12:52:11 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = cub.a
+
+RM = rm
+
 CC = clang -g3 -fsanitize=address -Wall -Wextra -Werror
 
-SRC = get_next_line.c
-SRC += get_next_line_utils.c
+INCLUDES = -I./../../includes
+INCLUDES += -I./../../libft
+EXTRARGS = 	-fno-stack-protector 
+
+SRC = get_next_line_utils.c
+SRC += get_next_line.c
 SRC += ft_parsing.c
 SRC += ft_map.c
 SRC += ft_outils.c
 
-SRCS = $(SRCS:.c=.o)
 
-all:	
+
+OBJS = $(addprefix ./../, $(SRC:.c=.o))
+
+all:	$(OBJS)
 	make -C ../../libft/ 
-	$(CC) $(addprefix ./../, ${SRCS}) ../../main.c ../../libft/libft.a  -I./src/ -I./../../libft -I./../../includes -fno-stack-protector 
-	./a.out	
+	ar rc ${NAME} ${OBJS}
+	cp ../../libft/libft.a .
+	cc main.c cub.a libft.a
+
+.c.o:
+	$(CC) $(INCLUDES) -g -c $< -o ${<:.c=.o}
+
+
+clean:
+	${RM} ${OBJS}
+	${RM} *.gch
+
+fclean: clean
+	make fclean -C ./libft
+	${RM} ${NAME}
+
+
+re: fclean all
+
 
 .PHONY: all

@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 13:29:03 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/05 15:00:25 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/07 13:24:04 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ void	ft_print2d(char **tab)
 	int start;
 
 	counter = 0;
-	while (tab[counter] != NULL)
+	while (tab[counter] != NULL && tab != NULL)
 		counter++;
-	ft_putstr("\ncounter = ");
+	ft_putstr("\nMap has ");
 	ft_putnbr(counter);
-	ft_putstr("\n");
+	ft_putstr(" lines.\n");
 	start = 0;
 	while (counter > start)
 	{
 		ft_putstr("\n ");
 		ft_putstr(tab[start]);
-		ft_putstr("\n");
 		start++;
 	}
 }

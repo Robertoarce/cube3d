@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:44:04 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/05 16:00:56 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/07 17:50:28 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,12 @@ typedef struct    s_data
 	int				f[4];
 	int				c[4];
 	char			**map;
-	int				max_x;
-	int				y;
 	int				start;
+	int				player;
 }                 t_data;
 
 
-int		ft_parse(char *line, t_data *data);
+int		ft_parse(char *line, t_data *data, int counter);
 int		ft_categorize(char **split, int slots, t_data *data);
 int		ft_add_r(char **split, int slots, t_data *data);
 int		ft_add_f(char **split, int slots, t_data *data);
@@ -78,11 +77,16 @@ int		ft_add_s(char **split, int slots, t_data *data);
 int		ft_error(char *tab);
 int		ft_isposnum(char *tab);
 
-void	ft_freeinfos(t_data *data);
+int		ft_freeinfos(t_data *data);
 int		ft_readall(t_data *data);
 int		ft_validstr(char *data);
 
 int		ft_mapappend(char *ptr, t_data *data);
+int		ft_mapcheck(t_data *data);
 
+int		ft_top(t_data *data, int place, int x);
+int		ft_bot(t_data *data, int place, int x);
+int		ft_left(t_data *data, int place, int x);
+int		ft_right(t_data *data, int place, int x);
 
 #endif
