@@ -6,18 +6,17 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 15:01:47 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/07 17:50:12 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/12 18:52:52 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
 #include	<stdlib.h>
-#include	<stdio.h>
 #include	<string.h>
 #include	<fcntl.h>
 #include	"cublib.h"
 #include	"libft.h"
 
-//#include <mlx.h>
+#include <mlx.h>
 
 static void ft_init(t_data *data)
 {
@@ -41,6 +40,9 @@ static void ft_init(t_data *data)
 	data->map = ft_strnew2(1);
 	data->start = -1;
 	data->player = 0;
+
+	data->x = 500;
+	data->y = 500;
 }
 
 int	ft_readall(t_data *data)
@@ -108,37 +110,48 @@ static void ft_printit(t_data data)
 	printf("data.player ->%d\n",data.player);
 }
 
-
-int main()//int argc, char *argv[])
+static int moveup(int keycode, t_data *data)
 {
+	ft_putstr("\n got in! ");
+	data->x = data->x + 50;
+	ft_putstr("\n got it puting +50 on x, x= ");
+	ft_putnbr(data->x);
 
-	t_data        data;
-	
-	if (ft_readall(&data) == -1)
-		return (ft_freeinfos(&data));
-	ft_printit(data);
-	if (ft_mapcheck(&data) == -1)
-		return (ft_freeinfos(&data));
-//	if (ft_checkmap(&data) == -1)
-//		return (0);
-/*	
-    if ((data.mlx_ptr = mlx_init()) == NULL)
-        return (EXIT_FAILURE);
-    if ((data.mlx_win = mlx_new_window(data.mlx_ptr, 640, 480, "Hello world")) == NULL)
-        return (EXIT_FAILURE);
-    mlx_loop(data.mlx_ptr);
-    return (EXIT_SUCCESS);
-*/
-
-/*-----reading the file ------- */
-	//ft_putstr("\n ===== map time ====  \n");
-	ft_print2d(data.map);
-	
-	ft_freeinfos(&data);
-return (0);
+	return (0);
 }
 
 
+int main()//int argc, char *argv[])
+{
+	t_img		img;
+	t_data        data;
+//	int			offset;
+
+	if (ft_readall(&data) == -1)
+		return (ft_freeinfos(&data));
+//	ft_printit(data);
+	if (ft_mapcheck(&data) == -1)
+		return (ft_freeinfos(&data));
+	
+    if ((data.mlx_ptr = mlx_init()) == NULL) // init 
+        return (ft_error("Error: Can't init mlx, check drivers"));
+    if ((data.mlx_win = mlx_new_window(data.mlx_ptr, data.r[0], data.r[1], "Cub3D")) == NULL) // create window
+		return (ft_error("Error: cannot open a new window"));
+
+	if ((img.img = mlx_new_image(data.mlx_ptr, 1920,1080)) == NULL) // image
+		return (ft_error("Error: Can't init mlx, check drivers"));
+
+   //img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian); // create a img
+
+
+	mlx_pixel_put(data.mlx_ptr, data.mlx_win,  data.x, data.y, 0xFF0000FF);//put a pixel
+
+//	mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, img.img, 0, 0);// put the img in the window
+	mlx_key_hook(data.mlx_ptr, moveup, &data);
+	mlx_loop(data.mlx_ptr);
+
+	return (0);
+}
 
 
 

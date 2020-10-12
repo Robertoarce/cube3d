@@ -6,22 +6,36 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 09:23:07 by titorium          #+#    #+#              #
-#    Updated: 2020/10/07 17:55:11 by titorium         ###   ########.fr        #
+#    Updated: 2020/10/12 14:58:03 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME		=	cub3d
-
-LIBFT		=	./libft/libft.a
-INCLUDE		=	-I./includes/
-INCLUDE		+=	-I./libft/
-
+ 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
+
+
+
+LIBS		=	minilibx-linux/libmlx.a
+LIBS		+=	minilibx-linux/libmlx_Linux.a
+LIBS		+=	minilibx-linux/libmlx_x86_64.a
+LIBS		+=	-I./includes/
+LIBS		+=	-I./libft/
+LIBS		+=	./libft/libft.a
+#cc main.c -L -lmlx -L./minilibx-linux/libmlx -lXext -lX11 -lm -lbsd minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a minilibx-linux/libmlx_x86_64.a
+#cc main.c -L -lmlx -L./minilibx-linux/libmlx -lXext -lX11 -lm -lbsd minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a minilibx-linux/libmlx_x86_64.a  -I./libft  ./srcs/ft_infos2.c -I./includes ./srcs/ft_infos3.c ./srcs/ft_infos.c ./srcs/ft_map2.c ./srcs/ft_map.c ./srcs/ft_outils.c ./srcs/ft_parsing.c ./srcs/get_next_line.c ./srcs/get_next_line_utils.c  libft.a
+
+
+INCLUDE		=	-L	-lmlx
+INCLUDE		+=	-lXext
+INCLUDE		+=	-lX11	
+INCLUDE		+=	-lm
+INCLUDE		+=	-lbsd
+
 RM			=	rm -f
 
-SRC			=	main.c
 SRCS		=	get_next_line.c
 SRCS		+=	get_next_line_utils.c
 SRCS		+=	ft_parsing.c
@@ -33,20 +47,18 @@ SRCS		+=	ft_map.c
 SRCS		+=	ft_map2.c
 
 
-
-OBJ			=	${SRC:.c=.o}
 OBJS		=	$(addprefix ./srcs/, ${SRCS:.c=.o})
-
-
 
 .c.o:
 	${CC} ${CFLAGS} $(INCLUDE) -g -c $< -o ${<:.c=.o}
 
-$(NAME):	${OBJS} $(OBJ)
+all:	${NAME}
+
+
+$(NAME):	$(OBJS)
 	make -C ./libft
 	ar -rcs $(NAME) $(OBJ) $(OBJS)
-
-all:	${NAME}
+	$(CC)	$(CFLAGS) $(LIBS) $(INCLUDE) -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o	$(NAME)	
 
 clean:
 	make clean -C ./libft

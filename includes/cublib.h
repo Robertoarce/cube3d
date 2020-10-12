@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:44:04 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/07 17:50:28 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/12 18:20:50 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 /************************************************/
 
 int		get_next_line(int fd, char **line);
-//char	*ft_strnew(int size);
-//char	*ft_joint(char **fd_backup, char *b, int cut_pos);
 int		ft_findnl(char *tab);
 char	*ft_strncpy(char *dst, char *src, int size);
 
@@ -46,8 +44,8 @@ char	*ft_strncpy(char *dst, char *src, int size);
 
 typedef struct    s_data
 {
-//	void			*mlx_ptr;
-//	void			*mlx_win;
+	void			*mlx_ptr;
+	void			*mlx_win;
 
 	char			*no;
 	char			*so;
@@ -60,8 +58,18 @@ typedef struct    s_data
 	char			**map;
 	int				start;
 	int				player;
+	int				x;
+	int				y;
 }                 t_data;
 
+typedef struct    s_img
+{
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+} 				t_img;
 
 int		ft_parse(char *line, t_data *data, int counter);
 int		ft_categorize(char **split, int slots, t_data *data);

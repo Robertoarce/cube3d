@@ -6,11 +6,11 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/25 11:02:38 by titorium          #+#    #+#              #
-#    Updated: 2020/10/07 17:55:31 by titorium         ###   ########.fr        #
+#    Updated: 2020/10/12 14:50:30 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-R   1920 108
+R   1920 1008
 NO ./path_to_the_north_texture
 SO ./path_to_the_south_texture
 WE ./path_to_the_west_texture
