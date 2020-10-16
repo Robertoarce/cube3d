@@ -6,12 +6,19 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 11:26:58 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/07 17:21:15 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/15 12:07:40 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cublib.h"
+
+/*
+*** THIS FILE SERVES TO TAKE THE INFORMATIONS OF THE MAP - PART 1
+*/
+/*
+*** ft_categorize2 = continuation of ft_categorize (Just bellow).
+*/
 
 static int	ft_categorize2(char **split, int slots, t_data *data)
 {
@@ -29,6 +36,10 @@ static int	ft_categorize2(char **split, int slots, t_data *data)
 		ft_add_s(&*split, slots, &*data);
 	return (0);
 }
+
+/*
+*** ft_categorize = what argument are we treating? ->send to func.
+*/
 
 int			ft_categorize(char **split, int slots, t_data *data)
 {

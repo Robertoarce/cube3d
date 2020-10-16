@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:44:04 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/12 18:20:50 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/15 18:30:12 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
 
-/************************************************/
-/*												*/
-/* 				Get next line Library			*/
-/*												*/
-/************************************************/
+/*
+***	-----------	 Get next line Lib	-----------------
+*/
 
 int		get_next_line(int fd, char **line);
 int		ft_findnl(char *tab);
 char	*ft_strncpy(char *dst, char *src, int size);
 
+/*
+***	-----------	 Cub3D  Lib	 ------------------------
+*/
 
-/************************************************/
-/*												*/
-/* 				cub3d lib						*/
-/*												*/
-/************************************************/
+/*
+*** 				GAME DATA
+*/
 
 typedef struct    s_data
 {
@@ -62,15 +62,11 @@ typedef struct    s_data
 	int				y;
 }                 t_data;
 
-typedef struct    s_img
-{
-	void			*img;
-	char			*addr;
-	int				bpp;
-	int				line_len;
-	int				endian;
-} 				t_img;
 
+/*
+*** 				PARSING
+*/
+void	ft_init(t_data *data);
 int		ft_parse(char *line, t_data *data, int counter);
 int		ft_categorize(char **split, int slots, t_data *data);
 int		ft_add_r(char **split, int slots, t_data *data);
@@ -82,6 +78,10 @@ int		ft_add_we(char **split, int slots, t_data *data);
 int		ft_add_ea(char **split, int slots, t_data *data);
 int		ft_add_s(char **split, int slots, t_data *data);
 
+/*
+*** 				UTILS				
+*/
+
 int		ft_error(char *tab);
 int		ft_isposnum(char *tab);
 
@@ -92,9 +92,21 @@ int		ft_validstr(char *data);
 int		ft_mapappend(char *ptr, t_data *data);
 int		ft_mapcheck(t_data *data);
 
+/*
+*** 				GAME MOVEMENT				
+*/
+
+
 int		ft_top(t_data *data, int place, int x);
 int		ft_bot(t_data *data, int place, int x);
 int		ft_left(t_data *data, int place, int x);
 int		ft_right(t_data *data, int place, int x);
+
+/*
+***					RAYCASTING
+*/
+
+
+
 
 #endif

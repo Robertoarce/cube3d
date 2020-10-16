@@ -6,68 +6,102 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 09:23:07 by titorium          #+#    #+#              #
-#    Updated: 2020/10/12 14:58:03 by titorium         ###   ########.fr        #
+#    Updated: 2020/10/16 11:33:24 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME		=	cub3d
- 
-CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror
+
+# --------- SYSTEM TARGETING -- #
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Linux)
+	MLX_DIR	= ./minilibx-linux
+	MLX 	= -L $(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
+	ENV		= -D LINUX
+	CC		=	clang
+else
+	MLX_DIR	= ./minilibx_mms_20200219
+	MLX 	= -L $(MLX_DIR) -lmlx -framework OpenGL -framework Appkit
+	ENV		=
+	CC		=	gcc
+endif
+
+CFLAGS		=	-Wall -Wextra -Werror -g
+
+# --------- SOURCES ------------------- #
+
+# Main
+SRCS		= cub3d.c
+
+#	GNL
+SRCS		+=	gnl/get_next_line.c
+SRCS		+=	gnl/get_next_line_utils.c
+
+#	UTILS
+SRCS		+= utils/ft_outils.c
+
+#	PROCESS
+SRCS		+= process/ft_start.c
+SRCS		+= process/ft_finish.c
+
+#	PARSING
+SRCS		+=	parsing/ft_infos.c
+SRCS		+=	parsing/ft_infos2.c
+SRCS		+=	parsing/ft_infos3.c
+SRCS		+=	parsing/ft_map.c
+SRCS		+=	parsing/ft_map2.c
+SRCS		+=	parsing/ft_parsing.c
+SRCS		+=	parsing/ft_readmapfile.c
+
+#	RAYCASTING
 
 
 
-LIBS		=	minilibx-linux/libmlx.a
-LIBS		+=	minilibx-linux/libmlx_Linux.a
-LIBS		+=	minilibx-linux/libmlx_x86_64.a
-LIBS		+=	-I./includes/
-LIBS		+=	-I./libft/
-LIBS		+=	./libft/libft.a
+
 #cc main.c -L -lmlx -L./minilibx-linux/libmlx -lXext -lX11 -lm -lbsd minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a minilibx-linux/libmlx_x86_64.a
 #cc main.c -L -lmlx -L./minilibx-linux/libmlx -lXext -lX11 -lm -lbsd minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a minilibx-linux/libmlx_x86_64.a  -I./libft  ./srcs/ft_infos2.c -I./includes ./srcs/ft_infos3.c ./srcs/ft_infos.c ./srcs/ft_map2.c ./srcs/ft_map.c ./srcs/ft_outils.c ./srcs/ft_parsing.c ./srcs/get_next_line.c ./srcs/get_next_line_utils.c  libft.a
 
 
-INCLUDE		=	-L	-lmlx
-INCLUDE		+=	-lXext
-INCLUDE		+=	-lX11	
-INCLUDE		+=	-lm
-INCLUDE		+=	-lbsd
 
-RM			=	rm -f
+# --------- INCLUDES  ------------------- #
 
-SRCS		=	get_next_line.c
-SRCS		+=	get_next_line_utils.c
-SRCS		+=	ft_parsing.c
-SRCS		+=	ft_infos.c
-SRCS		+=	ft_infos2.c
-SRCS		+=	ft_infos3.c
-SRCS		+=	ft_outils.c
-SRCS		+=	ft_map.c
-SRCS		+=	ft_map2.c
+LIBFT		= ./srcs/libft/libft.a
+LIBFTPATH	= ./srcs/libft/
+INC_MINIX	= -I./includes/
+INC_MINIX	+= -I$(LIBFTPATH)
+INC_MINIX	+= -I$(MLX_DIR)
 
+
+# --------- OBJS ----------------------- #
 
 OBJS		=	$(addprefix ./srcs/, ${SRCS:.c=.o})
 
+#-----------------------------#
+#------- COMPILATION ---------#
+#-----------------------------#
+
+all: $(NAME)
+
 .c.o:
-	${CC} ${CFLAGS} $(INCLUDE) -g -c $< -o ${<:.c=.o}
-
-all:	${NAME}
-
+	${CC} $(INC_MINIX) $(ENV) ${CFLAGS} -g -c $< -o ${<:.c=.o}
 
 $(NAME):	$(OBJS)
-	make -C ./libft
-	ar -rcs $(NAME) $(OBJ) $(OBJS)
-	$(CC)	$(CFLAGS) $(LIBS) $(INCLUDE) -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o	$(NAME)	
+	$(MAKE) -C $(LIBFTPATH)
+	cp $(LIBFT) ./$(NAME)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) $(INC_MINIX)  $(OBJS)  -o	$@ $(MLX) -L$(LIBPATH) -lft $(LIBFT)
 
 clean:
-	make clean -C ./libft
-	${RM} ${OBJS} $(OBJ)
+	$(MAKE) clean -C $(MLX_DIR)
+	$(MAKE) clean -C $(LIBFTPATH)
+	rm -f $(OBJS)
 
 fclean: clean
-	make fclean -C ./libft
-	${RM} ${NAME}
+	rm -f $(NAME)
 
-re:	fclean all
+re: fclean
+	$(MAKE)
 
 .PHONY : all clean fclean re

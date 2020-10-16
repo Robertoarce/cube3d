@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_finish.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 11:06:13 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/08 11:06:16 by titorium         ###   ########.fr       */
+/*   Created: 2020/10/15 16:54:07 by titorium          #+#    #+#             */
+/*   Updated: 2020/10/15 16:57:12 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "cublib.h"
+#include "libft.h"
 
-int main(void)
+/*
+***	 At FINISH:	Free game values alocations
+*/
+
+int	ft_freeinfos(t_data *data)
 {
-  void *mlx;
-  void *window;
-  
-  mlx = mlx_init();
-  window = mlx_new_window(mlx, 1000, 1000, "Title");
-  
-  mlx_loop(mlx);
-  return (0);
+	if (data->no != NULL)
+		free(data->no);
+	if (data->so != NULL)
+		free(data->so);
+	if (data->we != NULL)
+		free(data->we);
+	if (data->ea != NULL)
+		free(data->ea);
+	if (data->s != NULL)
+		free(data->s);
+	if (data->map != NULL)
+		ft_strfree(data->map);
+	return (0);
 }

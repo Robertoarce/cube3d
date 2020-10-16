@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_outils.c                                        :+:      :+:    :+:   */
+/*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/29 14:06:56 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/06 17:36:27 by titorium         ###   ########.fr       */
+/*   Created: 2020/10/15 12:13:02 by titorium          #+#    #+#             */
+/*   Updated: 2020/10/15 16:55:51 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "cublib.h"
+#include "libft.h"
 
-int	ft_error(char *tab)
+/*
+***		Initialize game values
+*/
+
+void	ft_init(t_data *data)
 {
-	ft_putstr_fd(tab, 2);
-	return (-1);
-}
-
-int	ft_isposnum(char *tab)
-{
-	int counter;
-
-	counter = 0;
-	while (tab && tab[counter] != '\0')
-	{
-		if (ft_isdigit(tab[counter]) == 0)
-			return (-1);
-		if (counter > 4)
-			return (-1);
-		counter++;
-	}
-	return (1);
+	data->r[0] = -1;
+	data->r[1] = -1;
+	data->f[0] = -1;
+	data->f[1] = -1;
+	data->f[2] = -1;
+	data->c[0] = -1;
+	data->c[1] = -1;
+	data->c[2] = -1;
+	data->no = NULL;
+	data->so = NULL;
+	data->we = NULL;
+	data->ea = NULL;
+	data->s = NULL;
+	data->map = ft_strnew2(1);
+	data->start = -1;
+	data->player = 0;
+	data->x = 500;
+	data->y = 500;
 }

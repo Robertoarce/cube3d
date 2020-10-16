@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/23 15:01:47 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/15 17:17:27 by titorium         ###   ########.fr       */
+/*   Created: 2020/10/15 18:07:00 by titorium          #+#    #+#             */
+/*   Updated: 2020/10/15 18:40:12 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include 	<stdio.h>
+#include <stdio.h>
 #include	<stdlib.h>
 #include	<string.h>
 #include	<fcntl.h>
@@ -18,38 +18,25 @@
 
 #include <mlx.h>
 
-int	ft_readall(t_data *data)
+
+
+/*
+static void ft_printit(t_data data)
 {
-	int fd;
-	int r;
-	char *line;
-	
-	fd = open("infos.cub", O_RDONLY);
-	ft_init(&*data);
-
-	while((r = get_next_line(fd, &line)) > 0) // while we have a line
-	{
-		printf("%d |%s\n", r, line);
-		if (ft_parse(line, &*data, 0) == -1)	// get line + add info -> to struct
-		{
-			if (line)
-				free(line);
-		   	return (-1);
-		}
-
-	//	if (ft_checkinput(line,&* tdata)  == -1); //check we have all values
-	//		return(-1);
-
-		free(line);
-	}
-	if (r == -1)
-		line = NULL;
-	if (line)
-		free(line);
-	close(fd);
-	return (0);
+	printf("\n ==== DATA =====\n");
+	printf("data.r ->%d,%d\n",data.r[0],data.r[1]);
+	printf("data.f ->%d,%d,%d\n",data.f[0],data.f[1],data.f[2]);
+	printf("data.c ->%d,%d,%d\n",data.c[0],data.c[1],data.c[2]);
+	printf("data.no ->%s\n",data.no);
+	printf("data.so ->%s\n",data.so);
+	printf("data.we ->%s\n",data.we);
+	printf("data.ea ->%s\n",data.ea);
+	printf("data.s ->%s\n",data.s);
+	printf("data.map ->%s\n",*data.map);
+	printf("data.start ->%d\n",data.start);
+	printf("data.player ->%d\n",data.player);
 }
-
+*/
 int moveup(int keycode, t_data *data)
 {
 	if (keycode == 'a' || keycode == 65361)

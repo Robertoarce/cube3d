@@ -6,12 +6,20 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 12:56:49 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/07 17:18:12 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/15 12:09:42 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cublib.h"
+
+/*
+*** THIS FILE SERVES TO TAKE THE INFORMATIONS OF THE MAP - PART 2
+*/
+
+/*
+*** Add the infortmations needed for = R
+*/
 
 int			ft_add_r(char **split, int slots, t_data *data)
 {
@@ -41,6 +49,10 @@ int			ft_add_r(char **split, int slots, t_data *data)
 	return (0);
 }
 
+/*
+*** Add the infortmations needed for = F (part 2)
+*/
+
 static int	ft_add_f2(char **ptr, int counter, t_data *data, int *buton)
 {
 	while (ptr[counter] != NULL && ptr[counter][0] != '\0')
@@ -59,6 +71,10 @@ static int	ft_add_f2(char **ptr, int counter, t_data *data, int *buton)
 	}
 	return (counter);
 }
+
+/*
+*** Add the infortmations needed for = F (part 1)
+*/
 
 int			ft_add_f(char **split, int slots, t_data *data)
 {
@@ -84,6 +100,10 @@ int			ft_add_f(char **split, int slots, t_data *data)
 	return (0);
 }
 
+/*
+*** Add the infortmations needed for = C (part 2)
+*/
+
 static int	ft_add_c2(char **ptr, int counter, t_data *data, int *buton)
 {
 	while (ptr[counter] != NULL && ptr[counter][0] != '\0')
@@ -102,6 +122,10 @@ static int	ft_add_c2(char **ptr, int counter, t_data *data, int *buton)
 	}
 	return (counter);
 }
+
+/*
+*** Add the infortmations needed for = C (part 1)
+*/
 
 int			ft_add_c(char **split, int slots, t_data *data)
 {
