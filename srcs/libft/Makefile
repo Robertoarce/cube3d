@@ -6,7 +6,7 @@
 #    By: rarce <rarce@42.student.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/30 15:38:36 by rarce             #+#    #+#              #
-#    Updated: 2020/10/05 17:25:51 by titorium         ###   ########.fr        #
+#    Updated: 2020/10/20 14:43:43 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,9 +70,11 @@ SRCS += ft_strmapi.c
 
 SRCS += ft_findc.c
 SRCS += ft_strnew2.c
+SRCS += ft_str2len.c
 SRCS += ft_append.c
 SRCS += ft_str2free.c
 SRCS += ft_print2d.c
+
 
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \

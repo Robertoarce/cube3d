@@ -6,7 +6,7 @@
 /*   By: rarce <rarce@42.student.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:54:40 by rarce             #+#    #+#             */
-/*   Updated: 2020/10/05 13:35:52 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/20 14:43:23 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			ft_print2d(char **tab);
 void			ft_strfree(char **tab);
 int				*ft_intnew(int size);
 int				ft_strlen(const char *s);
+int				ft_str2len(const char **s);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 char			*ft_strchr(const char *s, int c);

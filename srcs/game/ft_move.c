@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 10:34:18 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/23 11:43:08 by titorium         ###   ########.fr       */
+/*   Created: 2020/10/22 16:10:08 by titorium          #+#    #+#             */
+/*   Updated: 2020/10/22 17:46:38 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "cublib.h"
+#include	"cublib.h"
+#include	"libft.h"
 
-/*
-***	START MAP PARSING - APPEND LINE + count rows
-*/
-
-int			ft_mapappend(char *line, t_data *data)
+void	ft_move(t_data *data, char *key)
 {
-	if (line == NULL)
-		return (ft_error("line in map is empty?"));
-	data->map = ft_append(data->map, line);
-	if (data->cols < ft_strlen(line))
-		data->cols = ft_strlen(line);
-	data->rows++;
-	data->start = 1;
-	return (1);
+	if (key == FORWD)
+		ft_forwd(
+
+
 }

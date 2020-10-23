@@ -6,7 +6,7 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 09:23:07 by titorium          #+#    #+#              #
-#    Updated: 2020/10/16 11:33:24 by titorium         ###   ########.fr        #
+#    Updated: 2020/10/23 11:48:53 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,16 +47,20 @@ SRCS		+= process/ft_start.c
 SRCS		+= process/ft_finish.c
 
 #	PARSING
-SRCS		+=	parsing/ft_infos.c
-SRCS		+=	parsing/ft_infos2.c
-SRCS		+=	parsing/ft_infos3.c
+SRCS		+=	parsing/ft_categorize.c
+SRCS		+=	parsing/ft_categorize_rfc.c
+SRCS		+=	parsing/ft_categorize_rest.c
 SRCS		+=	parsing/ft_map.c
-SRCS		+=	parsing/ft_map2.c
-SRCS		+=	parsing/ft_parsing.c
-SRCS		+=	parsing/ft_readmapfile.c
+SRCS		+=	parsing/ft_mapcheck.c
+SRCS		+=	parsing/ft_mapcheck2.c
+SRCS		+=	parsing/ft_parsing_main.c
+SRCS		+=	parsing/ft_parsing_main2.c
 
 #	RAYCASTING
 
+SRCS		+=	raycasting/ft_geometry.c
+SRCS		+=	raycasting/ft_minimap.c
+SRCS		+=	raycasting/ft_drawing.c
 
 
 

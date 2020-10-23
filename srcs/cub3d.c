@@ -6,21 +6,14 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:07:00 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/15 18:40:12 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/23 11:25:32 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-#include	<stdlib.h>
-#include	<string.h>
-#include	<fcntl.h>
 #include	"cublib.h"
 #include	"libft.h"
 
-#include <mlx.h>
 
-
-
-/*
 static void ft_printit(t_data data)
 {
 	printf("\n ==== DATA =====\n");
@@ -34,9 +27,15 @@ static void ft_printit(t_data data)
 	printf("data.s ->%s\n",data.s);
 	printf("data.map ->%s\n",*data.map);
 	printf("data.start ->%d\n",data.start);
-	printf("data.player ->%d\n",data.player);
+	printf("data.player ->%d\n",data.presence_player);
+	printf("data.posx ->%d\n",data.player.posx);
+	printf("data.posy ->%d\n",data.player.posy);
+	printf("data.player ->%d\n",data.presence_player);
+	printf("data.cols->%d\n",data.cols);
+	printf("data.rows ->%d\n",data.rows);
+	printf(" ==== DATA =====\n");
 }
-*/
+
 int moveup(int keycode, t_data *data)
 {
 	if (keycode == 'a' || keycode == 65361)
@@ -59,32 +58,36 @@ int moveup(int keycode, t_data *data)
 
 int main()//int argc, char *argv[])
 {
-//	t_img		img;
-	t_data        data;
-//	int			offset;
+	t_data		data;
+	t_pixel		img;
 
-	if (ft_readall(&data) == -1)
+	if (ft_parseall(&data) == -1)
 		return (ft_freeinfos(&data));
-//	ft_printit(data);
-	if (ft_mapcheck(&data) == -1)
-		return (ft_freeinfos(&data));
-	
-    if ((data.mlx_ptr = mlx_init()) == NULL) // init 
+
+ft_printit(data);
+
+
+    if ((data.mlx_ptr = mlx_init()) == NULL) // init mlx
         return (ft_error("Error: Can't init mlx, check drivers"));
+
     if ((data.mlx_win = mlx_new_window(data.mlx_ptr, data.r[0], data.r[1], "Cub3D")) == NULL) // create window
 		return (ft_error("Error: cannot open a new window"));
 
-//	if ((img.img = mlx_new_image(data.mlx_ptr, 1920,1080)) == NULL) // image
-//		return (ft_error("Error: Can't init mlx, check drivers"));
+/*--------------------------------------------*/
+	if ((img.img = mlx_new_image(data.mlx_ptr, data.r[0], data.r[1])) == NULL) // image canvas
+		return (ft_error("Error: Can't init new image, check drivers"));
 
-   //img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian); // create a img
+    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel , &img.line_length, &img.endian); // image info //32= 4 char x 8 bits
 
-	mlx_pixel_put(data.mlx_ptr, data.mlx_win,  data.x, data.y, 0xFF00FFFF);//put a pixel
+	ft_drawminimap(&data, &img);
+//	ft_drawplayer(&data, &img);
+	
+	mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, img.img, 0, 0); //image to window
 
-//	mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, img.img, 0, 0);// put the img in the window
-	mlx_key_hook(data.mlx_win, moveup, &data);
-	ft_putstr("\n outside value of X, x= ");
-	ft_putnbr(data.x);
+
+/*-------------------------------------------*/
+
+
 	mlx_loop(data.mlx_ptr);
 
 	return (0);

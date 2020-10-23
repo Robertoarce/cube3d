@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_infos.c                                         :+:      :+:    :+:   */
+/*   ft_categorize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/29 11:26:58 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/15 12:07:40 by titorium         ###   ########.fr       */
+/*   Created: 2020/10/23 10:08:16 by titorium          #+#    #+#             */
+/*   Updated: 2020/10/23 10:08:19 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 /*
 *** THIS FILE SERVES TO TAKE THE INFORMATIONS OF THE MAP - PART 1
+***	it will find the values for SO,WE... except map
 */
 /*
 *** ft_categorize2 = continuation of ft_categorize (Just bellow).

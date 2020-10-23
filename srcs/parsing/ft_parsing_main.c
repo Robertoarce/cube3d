@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_readmapfile.c                                   :+:      :+:    :+:   */
+/*   ft_parsing_main.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/15 14:04:12 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/15 18:22:44 by titorium         ###   ########.fr       */
+/*   Created: 2020/10/23 10:16:57 by titorium          #+#    #+#             */
+/*   Updated: 2020/10/23 11:42:17 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cublib.h"
 
-int	ft_readall(t_data *data)
+int	ft_parseall(t_data *data)
 {
 	int		fd;
 	int		r;
@@ -36,5 +36,7 @@ int	ft_readall(t_data *data)
 	if (line)
 		free(line);
 	close(fd);
+	if (ft_mapcheck(data) == -1)
+		return (-1);
 	return (0);
 }

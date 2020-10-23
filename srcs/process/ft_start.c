@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:13:02 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/15 16:55:51 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/23 10:50:53 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,15 @@ void	ft_init(t_data *data)
 	data->s = NULL;
 	data->map = ft_strnew2(1);
 	data->start = -1;
-	data->player = 0;
+	data->presence_player = 0;
 	data->x = 500;
 	data->y = 500;
+	data->rows = 0;
+	data->cols = 0;
+	data->player.posx = 0;
+	data->player.posy = 0;
+	data->player.dx = 0;
+	data->player.dy = 0;
+	data->player.angle= 0;
+
 }
