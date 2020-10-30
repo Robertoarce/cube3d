@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:07:00 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/23 11:25:32 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/28 19:11:20 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -28,38 +28,21 @@ static void ft_printit(t_data data)
 	printf("data.map ->%s\n",*data.map);
 	printf("data.start ->%d\n",data.start);
 	printf("data.player ->%d\n",data.presence_player);
-	printf("data.posx ->%d\n",data.player.posx);
-	printf("data.posy ->%d\n",data.player.posy);
+	printf("data.player.posx ->%d\n",data.player.posx);
+	printf("data.player.posy ->%d\n",data.player.posy);
 	printf("data.player ->%d\n",data.presence_player);
 	printf("data.cols->%d\n",data.cols);
 	printf("data.rows ->%d\n",data.rows);
+	printf("data.mapsize.x->%d\n",data.map_size.cols_size);
+	printf("data.mapsize.y->%d\n",data.map_size.rows_size);
 	printf(" ==== DATA =====\n");
-}
-
-int moveup(int keycode, t_data *data)
-{
-	if (keycode == 'a' || keycode == 65361)
-		data->x = data->x - 50;
-	if (keycode == 'd' || keycode == 65363)
-		data->x = data->x + 50;
-	if (keycode == 'w')
-		data->y = data->y - 50;
-	if (keycode == 's')
-		data->y = data->y + 50;
-	ft_putstr("\n  y= ");
-	ft_putnbr(data->y);
-	ft_putstr("\n  x= ");
-	ft_putnbr(data->x);
-	mlx_clear_window(data->mlx_ptr, data->mlx_win);
-	mlx_pixel_put(data->mlx_ptr, data->mlx_win,  data->x, data->y, 0xFF0000FF);//put a pixel
-
-	return (0);
 }
 
 int main()//int argc, char *argv[])
 {
 	t_data		data;
-	t_pixel		img;
+
+
 
 	if (ft_parseall(&data) == -1)
 		return (ft_freeinfos(&data));
@@ -74,21 +57,8 @@ ft_printit(data);
 		return (ft_error("Error: cannot open a new window"));
 
 /*--------------------------------------------*/
-	if ((img.img = mlx_new_image(data.mlx_ptr, data.r[0], data.r[1])) == NULL) // image canvas
-		return (ft_error("Error: Can't init new image, check drivers"));
-
-    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel , &img.line_length, &img.endian); // image info //32= 4 char x 8 bits
-
-	ft_drawminimap(&data, &img);
-//	ft_drawplayer(&data, &img);
-	
-	mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, img.img, 0, 0); //image to window
-
-
-/*-------------------------------------------*/
-
+	mlx_key_hook(data.mlx_win, ft_mainloop, &data);
 
 	mlx_loop(data.mlx_ptr);
-
 	return (0);
 }

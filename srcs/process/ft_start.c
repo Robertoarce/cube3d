@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:13:02 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/23 10:50:53 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/28 17:44:07 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ void	ft_init(t_data *data)
 	data->player.posy = 0;
 	data->player.dx = 0;
 	data->player.dy = 0;
-	data->player.angle= 0;
-
+	data->player.angle = 0;
 }

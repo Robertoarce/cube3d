@@ -6,36 +6,51 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 14:29:23 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/19 17:30:05 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/28 16:55:07 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"cublib.h"
 #include	"libft.h"
 
-void	ft_plotline(void *mlx_ptr, void *win_ptr, int x0, int y0, int x1, int y1)
+void	ft_drawcube(t_cube cube, t_pixel *img, int color)
 {
-	int x;
-	int y;
-	int dx;
-	int dy;
-	int d;
-ft_putstr("\n arrived");
-	dx = x1 - x0;
-	dy = y1 - y0;
-	d = 2 * dy - dx;
-	y = y0;
-	x = x0;
-	while (x < x1)
+	float	x;
+	float y;
+
+	x = cube.x0 + 1;
+	while (x < cube.x1)
 	{
-		mlx_pixel_put(&mlx_ptr, &win_ptr, x, y, 0xFF00FFFF);
-        if (d > 0)
+		y = cube.y0 + 1;
+		while (y < cube.y1)
 		{
-               y = y + 1;
-               d = d - 2*dx;
+			my_mlx_pixel_put(img, x, y, color);
+			y++;
 		}
-        d = d + 2*dy;
 		x++;
 	}
+}
 
+void	ft_drawline(t_cube cube, t_pixel *img, int color)
+{
+	int		x;
+	int		y;
+	float	m;
+
+	x = cube.x0;
+	y = cube.y0;
+	cube.y1 = cube.y1;
+	cube.x1 = cube.x1;
+
+	m = (cube.y1 - cube.y0) / (cube.x1 - cube.x0);
+	my_mlx_pixel_put(img, x, y, color);
+	my_mlx_pixel_put(img, cube.x1, cube.y1, color);
+	while ( x < cube.x1 || y < cube.y1)
+	{
+		if (x < cube.x1)
+			x++;
+		if (y < cube.y1)
+			y = (int)(m * x);
+		my_mlx_pixel_put(img, x, y, color);
+	}
 }

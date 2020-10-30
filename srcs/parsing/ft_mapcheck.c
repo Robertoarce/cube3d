@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 11:36:15 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/23 11:49:04 by titorium         ###   ########.fr       */
+/*   Updated: 2020/10/24 10:48:45 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_lettercheck(char *line)
 	return (0);
 }
 
-static int	ft_playercheck(char *line, t_data *data)
+static int	ft_playercheck(char *line, t_data *data, int x)
 {
 	int counter;
 
@@ -41,8 +41,8 @@ static int	ft_playercheck(char *line, t_data *data)
 		if (ft_findc("NSEWnsew", line[counter]) > -1)
 		{
 			data->presence_player = data->presence_player + 1;
-			data->player.posx = ft_findc("NSEWnsew", line[counter]);
-			data->player.posy = counter;
+			data->player.posy = x;
+			data->player.posx = counter;
 		}
 		counter++;
 	}
@@ -83,7 +83,7 @@ int			ft_mapcheck(t_data *data)
 	{
 		if (ft_lettercheck(data->map[x]) == -1)
 			return (-1);
-		if (ft_playercheck(data->map[x], &*data) == -1)
+		if (ft_playercheck(data->map[x], &*data, x) == -1)
 			return (-1);
 		if (ft_closecheck(data->map[x], &*data, x) == -1)
 			return (-1);
@@ -91,5 +91,8 @@ int			ft_mapcheck(t_data *data)
 	}
 	if (data->presence_player < 1)
 		return (ft_error("Error: invalid map, less than 1 player"));
+	data->map_size.cols_size = (data->r[0] / 4) / data->cols;
+	data->map_size.rows_size = (data->r[1] / 4) / data->rows;
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 09:23:07 by titorium          #+#    #+#              #
-#    Updated: 2020/10/23 11:48:53 by titorium         ###   ########.fr        #
+#    Updated: 2020/10/26 14:12:41 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,14 @@ SRCS		+=	parsing/ft_parsing_main2.c
 
 #	RAYCASTING
 
+
+SRCS		+=	raycasting/ft_mainloop.c
+SRCS		+=	raycasting/ft_draw_utils.c
 SRCS		+=	raycasting/ft_geometry.c
-SRCS		+=	raycasting/ft_minimap.c
-SRCS		+=	raycasting/ft_drawing.c
+SRCS		+=	raycasting/ft_drawminimap.c
+SRCS		+=	raycasting/ft_drawplayer.c
+SRCS		+=	raycasting/ft_moveplayer.c
+
 
 
 
