@@ -6,31 +6,92 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 17:12:02 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/30 15:01:59 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/07 14:35:26 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"cublib.h"
 #include	"libft.h"
 
+static int	ft_checkstep(t_data *data)
+{
+	int x0;
+	int x1;
+	int y0;
+	int y1;
+	
+	ft_createplayercube(data, 0, 0);
+	x0 = data->player.cube.x0;
+	x1 = data->player.cube.x1;
+
+	y0 = data->player.cube.y0;
+	y1 = data->player.cube.y1;
+
+	if (ft_checkwall(ft_xmappos(x0, *data), ft_ymappos(y0, *data), *data) == 1)
+		return (0);
+	if (ft_checkwall(ft_xmappos(x1, *data), ft_ymappos(y1, *data), *data) == 1)
+		return (0);
+	if (ft_checkwall(ft_xmappos(x1, *data), ft_ymappos(y0, *data), *data) == 1)
+		return (0);
+	if (ft_checkwall(ft_xmappos(x0, *data), ft_ymappos(y1, *data), *data) == 1)
+		return (0);
+	return (1);
+}
+
+
+
 int ft_move(int keycode, t_data  *data)
 {
-	int paso;
-	int top;
-	int bot;
-	
-	paso = 7;
-	top = 65;
-	bot = 150;
-	if (keycode == FORWD)
-		data->player.dy = data->player.dy - paso;
-	if (keycode == BACKWD)
-		data->player.dy = data->player.dy + paso;
-	if (keycode == LEFT)
-		data->player.dx = data->player.dx - paso;
-	if (keycode == RIGHT)
-		data->player.dx = data->player.dx + paso;
+	double lado;
+	double paso;
+	double angle;
+	int xbf;
+	int ybf;
 
+	angle = data->player.angle;
+	lado = 0.2;
+	paso = 10 / MINIMAPSIZE;
+
+	if (keycode == FORWD)
+	{
+		xbf = data->player.dx;
+		ybf = data->player.dy;
+
+		data->player.dy = sin(angle) * paso + data->player.dy;
+		data->player.dx = cos(angle) * paso + data->player.dx;
+		if (ft_checkstep(data) == 0)
+		{
+			data->player.dy = ybf;
+			data->player.dx = xbf;
+			ft_createplayercube(data, 0, 0);
+		}
+	}
+
+	if (keycode == BACKWD)
+	{
+		xbf = data->player.dx;
+		ybf = data->player.dy;
+		data->player.dy = -sin(angle) * paso + data->player.dy;
+		data->player.dx = -cos(angle) * paso + data->player.dx;
+		if (ft_checkstep(data) == 0)
+		{
+			data->player.dy = ybf;
+			data->player.dx = xbf;
+		}
+	}
+	if (keycode == RIGHT)
+	{
+		data->player.angle = data->player.angle + lado;
+		if (data->player.angle >= 2 * PI)
+			data->player.angle = data->player.angle - (2 * PI);
+
+	}	
+	if (keycode == LEFT)
+	{
+		data->player.angle = data->player.angle - lado;
+		if (data->player.angle < 0 )
+			data->player.angle = (2 * PI) + data->player.angle;
+	}
 	return (1);
 }
 

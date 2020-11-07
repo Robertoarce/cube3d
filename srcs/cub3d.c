@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:07:00 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/28 19:11:20 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/02 12:19:30 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -30,12 +30,19 @@ static void ft_printit(t_data data)
 	printf("data.player ->%d\n",data.presence_player);
 	printf("data.player.posx ->%d\n",data.player.posx);
 	printf("data.player.posy ->%d\n",data.player.posy);
+	printf("data.player.angle ->%f\n",data.player.angle);
 	printf("data.player ->%d\n",data.presence_player);
 	printf("data.cols->%d\n",data.cols);
 	printf("data.rows ->%d\n",data.rows);
 	printf("data.mapsize.x->%d\n",data.map_size.cols_size);
 	printf("data.mapsize.y->%d\n",data.map_size.rows_size);
-	printf(" ==== DATA =====\n");
+	printf(" ==== MAP =====\n");
+	int counter = 0;
+	while (data.map[counter] != NULL)
+	{
+		printf( "%s\n",data.map[counter]);
+		counter++;
+	}
 }
 
 int main()//int argc, char *argv[])

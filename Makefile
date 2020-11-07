@@ -6,7 +6,7 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 09:23:07 by titorium          #+#    #+#              #
-#    Updated: 2020/10/26 14:12:41 by titorium         ###   ########.fr        #
+#    Updated: 2020/11/07 11:36:18 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,10 @@ SRCS		+=	raycasting/ft_draw_utils.c
 SRCS		+=	raycasting/ft_geometry.c
 SRCS		+=	raycasting/ft_drawminimap.c
 SRCS		+=	raycasting/ft_drawplayer.c
+SRCS		+=	raycasting/ft_drawplayer_utils.c
 SRCS		+=	raycasting/ft_moveplayer.c
+SRCS		+=	raycasting/ft_raycasting.c
+SRCS		+=	raycasting/ft_raycasting_utils.c
 
 
 
@@ -91,7 +94,7 @@ OBJS		=	$(addprefix ./srcs/, ${SRCS:.c=.o})
 #------- COMPILATION ---------#
 #-----------------------------#
 
-all: $(NAME)
+all:	$(NAME)
 
 .c.o:
 	${CC} $(INC_MINIX) $(ENV) ${CFLAGS} -g -c $< -o ${<:.c=.o}
@@ -107,10 +110,10 @@ clean:
 	$(MAKE) clean -C $(LIBFTPATH)
 	rm -f $(OBJS)
 
-fclean: clean
+fclean:	clean
 	rm -f $(NAME)
 
-re: fclean
+re:	fclean
 	$(MAKE)
 
 .PHONY : all clean fclean re

@@ -6,15 +6,27 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 11:36:15 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/24 10:48:45 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/07 11:37:16 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cublib.h"
 
+static void	ft_getplayerangle(char c, t_data *data)
+{
+	if (c == 'N' || c == 'n')
+		data->player.angle = PI + PI / 2;
+	if (c == 'S' || c == 's')
+		data->player.angle = PI / 2;
+	if (c == 'E' || c == 'e')
+		data->player.angle = 0;
+	if (c == 'W' || c == 'w')
+		data->player.angle = PI;
+}
+
 /*
-*** CHECKS MAP
+*** CHECKS MAP + adds the  player pos x
 */
 
 static int	ft_lettercheck(char *line)
@@ -43,6 +55,7 @@ static int	ft_playercheck(char *line, t_data *data, int x)
 			data->presence_player = data->presence_player + 1;
 			data->player.posy = x;
 			data->player.posx = counter;
+			ft_getplayerangle(line[counter], data);
 		}
 		counter++;
 	}
@@ -72,12 +85,13 @@ static int	ft_closecheck(char *line, t_data *data, int x)
 }
 
 /*
-***	START MAP PARSING - APPEND LINE
+***	START MAP CHECK -
 */
 
 int			ft_mapcheck(t_data *data)
 {
 	int	x;
+
 	x = 0;
 	while (data->map[x] != NULL)
 	{
@@ -91,8 +105,8 @@ int			ft_mapcheck(t_data *data)
 	}
 	if (data->presence_player < 1)
 		return (ft_error("Error: invalid map, less than 1 player"));
-	data->map_size.cols_size = (data->r[0] / 4) / data->cols;
-	data->map_size.rows_size = (data->r[1] / 4) / data->rows;
-
+	data->map_size.cols_size = (data->r[0] / MINIMAPSIZE) / data->cols;
+	data->map_size.rows_size = (data->r[1] / MINIMAPSIZE) / data->rows;
+	ft_createplayercube(data, 0, 0);
 	return (0);
 }

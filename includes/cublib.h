@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:44:04 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/28 17:28:19 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/07 11:28:46 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@
 #  define EXIT_BTN	17
 # endif
 
-
+# define PI 3.14159265358979323
+# define MINIMAPSIZE 1
+# define PASO 
 /*
 ***	-----------	 Get next line Lib	-----------------
 */
@@ -105,9 +107,9 @@ typedef struct	s_player
 {
 	int		posx;
 	int		posy;
-	float	dx;
-	float	dy;
-	float	angle;
+	double	dx;
+	double	dy;
+	double	angle;
 	int		firstcube;
 	t_cube	cube;
 	t_cell	size;
@@ -195,12 +197,31 @@ int		ft_mainloop(int keycode, t_data *data);
 ***					RAYCASTING
 */
 
-
 void    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 void	ft_drawcube(t_cube cube, t_pixel *img, int color);
-void	ft_drawline(t_cube cube, t_pixel *img, int color);
-void	ft_drawplayer(t_data data, t_pixel *img);
+void	ft_drawline(t_cube cube, t_pixel *img, int color, int e2);
+void	ft_drawplayer(t_data *data, t_pixel *img);
 void	ft_drawminimap(t_data data, t_pixel *img);
+void	ft_drawray(t_data data, t_cube cube, t_pixel *img);
+void	ft_drawtail(t_data data, t_pixel *img, int color, int paso);
+
+
+
+/*
+***					RAYCASTING UTILS
+*/
+
+int		ft_xmappos(int x, t_data data);
+int		ft_ymappos(int y, t_data data);
+int		ft_checkwall(int x, int y, t_data data);
+
+/*
+***					RAYCASTING MOVE PLAYER UTILS
+*/
+
+void	ft_createplayercube(t_data *data, int xdistance, int ydistance);
+void	ft_createplayercube2(t_data *data, int xdistance, int ydistance);
+
 
 #endif
 
