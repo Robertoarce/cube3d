@@ -6,7 +6,7 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 09:23:07 by titorium          #+#    #+#              #
-#    Updated: 2020/11/07 11:36:18 by titorium         ###   ########.fr        #
+#    Updated: 2020/11/14 11:19:10 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,9 @@ SRCS		+=	raycasting/ft_drawplayer_utils.c
 SRCS		+=	raycasting/ft_moveplayer.c
 SRCS		+=	raycasting/ft_raycasting.c
 SRCS		+=	raycasting/ft_raycasting_utils.c
+SRCS		+=	raycasting/ft_raycasting_utils2.c
+SRCS		+=	raycasting/ft_raycasting_utils3.c
+SRCS		+=	raycasting/ft_raycasting_utils4.c
 
 
 

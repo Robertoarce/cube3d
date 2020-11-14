@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 17:12:02 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/13 16:16:41 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/14 15:18:37 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int	ft_checkstep(t_data *data)
 	y0 = data->player.cube.y0;
 	y1 = data->player.cube.y1;
 
-	if (ft_checkwall(ft_mapx(x0, *data), ft_mapy(y0, *data), *data) == 1)
+	if (ft_wal(ft_mx(x0, *data), ft_my(y0, *data), *data) == 1)
 		return (0);
-	if (ft_checkwall(ft_mapx(x1, *data), ft_mapy(y1, *data), *data) == 1)
+	if (ft_wal(ft_mx(x1, *data), ft_my(y1, *data), *data) == 1)
 		return (0);
-	if (ft_checkwall(ft_mapx(x1, *data), ft_mapy(y0, *data), *data) == 1)
+	if (ft_wal(ft_mx(x1, *data), ft_my(y0, *data), *data) == 1)
 		return (0);
-	if (ft_checkwall(ft_mapx(x0, *data), ft_mapy(y1, *data), *data) == 1)
+	if (ft_wal(ft_mx(x0, *data), ft_my(y1, *data), *data) == 1)
 		return (0);
 	return (1);
 }

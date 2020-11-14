@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:44:04 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/12 15:51:25 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/14 15:16:37 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,6 @@ int		ft_validstr(char *data);
 
 int		ft_move(int keycode, t_data *data);
 int		ft_mainloop(int keycode, t_data *data);
-//int		ft_mainloop( t_data *data);
 
 /*
 ***					RAYCASTING
@@ -208,13 +207,26 @@ void	ft_drawtail(t_data data, t_pixel *img, int color, int paso);
 
 
 /*
-***					RAYCASTING UTILS
+***					RAYCASTING UTILS 1 2 3
 */
 
-int		ft_mapx(int x, t_data data);
-int		ft_mapy(int y, t_data data);
-int		ft_checkwall(int x, int y, t_data data);
+int		ft_mx(int x, t_data data);
+int		ft_my(int y, t_data data);
+int		ft_wal(int x, int y, t_data data);
 int		ft_cuadrant(double angle);
+
+int		ft_give_nextwall(int isx, int value, t_data data);
+int		ft_give_prevwall(int isx, int value, t_data data);
+
+int		ft_getdx(int x, t_data data, int *wallx);
+int		ft_getdy(int y, t_data data, int *wally);
+
+int		ft_returndx(int dx);
+int		ft_returndy(int dy);
+int		ft_calc_hx(int x, t_data data, int *wallx);
+int		ft_calc_hy(int y, t_data data, int *wally);
+
+
 
 /*
 ***					RAYCASTING MOVE PLAYER UTILS
