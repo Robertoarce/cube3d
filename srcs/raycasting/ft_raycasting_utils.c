@@ -6,14 +6,14 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 13:04:47 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/07 11:17:34 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/12 15:51:30 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cublib.h"
 #include "libft.h"
 
-int	ft_xmappos(int x, t_data data)
+int	ft_mapx(int x, t_data data)
 {
 	int xpos;
 
@@ -22,7 +22,7 @@ int	ft_xmappos(int x, t_data data)
 	return (xpos);
 }
 
-int	ft_ymappos(int y, t_data data)
+int	ft_mapy(int y, t_data data)
 {
 	int ypos;
 
@@ -33,23 +33,34 @@ int	ft_ymappos(int y, t_data data)
 
 int	ft_checkwall(int x, int y, t_data data)
 {
-	ft_putstr("\nchecking the wall");
-		ft_putstr("\nx =");
-		ft_putnbr(x);
-		ft_putstr("\ty =");
-		ft_putnbr(y);
 
-	
+	ft_putstr("\nwall at [");
+	ft_putnbr(x);
+	ft_putstr("][");
+	ft_putnbr(y);
+	ft_putstr("]=");
+	ft_putchar(data.map[y][x]);
+	ft_putstr("\n");
+
+
+
 	if (x <= data.cols && y <= data.rows && y > -1 && x > -1 )
 	{
-		ft_putstr("\nmap [y][x] =");
-		ft_putchar(data.map[y][x]);
-
-		if (data.map[y][x] == '1' || data.map[y][x] == '2')
-		{ft_putstr("\n!!! found a  wall!!!");
-			return (1);}
+		if (data.map[y][x] == '1' || data.map[y][x] == '2' || data.map[y][x] == ' ' || data.map[y][x] == '\0')
+			return (1);
 	}
 	return (0);
 }
 
-
+int ft_cuadrant(double angle)
+{
+	if (cos(angle)> 0) //right side
+	{
+		if (sin(angle) > 0) // up side
+			return (1);
+		return (4);
+	}
+	if (sin(angle)>0)
+		return (2);
+	return (3);
+}

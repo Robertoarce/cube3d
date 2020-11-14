@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:44:04 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/07 11:28:46 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/12 15:51:25 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,9 +211,10 @@ void	ft_drawtail(t_data data, t_pixel *img, int color, int paso);
 ***					RAYCASTING UTILS
 */
 
-int		ft_xmappos(int x, t_data data);
-int		ft_ymappos(int y, t_data data);
+int		ft_mapx(int x, t_data data);
+int		ft_mapy(int y, t_data data);
 int		ft_checkwall(int x, int y, t_data data);
+int		ft_cuadrant(double angle);
 
 /*
 ***					RAYCASTING MOVE PLAYER UTILS

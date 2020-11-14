@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:07:00 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/02 12:19:30 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/13 13:11:36 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -34,8 +34,8 @@ static void ft_printit(t_data data)
 	printf("data.player ->%d\n",data.presence_player);
 	printf("data.cols->%d\n",data.cols);
 	printf("data.rows ->%d\n",data.rows);
-	printf("data.mapsize.x->%d\n",data.map_size.cols_size);
-	printf("data.mapsize.y->%d\n",data.map_size.rows_size);
+	printf("data.mapsize.x(cols size))->%d\n",data.map_size.cols_size);
+	printf("data.mapsize.y(row size)->%d\n",data.map_size.rows_size);
 	printf(" ==== MAP =====\n");
 	int counter = 0;
 	while (data.map[counter] != NULL)

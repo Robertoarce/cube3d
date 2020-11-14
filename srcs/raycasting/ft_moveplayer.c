@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 17:12:02 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/07 14:35:26 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/13 16:16:41 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int	ft_checkstep(t_data *data)
 	y0 = data->player.cube.y0;
 	y1 = data->player.cube.y1;
 
-	if (ft_checkwall(ft_xmappos(x0, *data), ft_ymappos(y0, *data), *data) == 1)
+	if (ft_checkwall(ft_mapx(x0, *data), ft_mapy(y0, *data), *data) == 1)
 		return (0);
-	if (ft_checkwall(ft_xmappos(x1, *data), ft_ymappos(y1, *data), *data) == 1)
+	if (ft_checkwall(ft_mapx(x1, *data), ft_mapy(y1, *data), *data) == 1)
 		return (0);
-	if (ft_checkwall(ft_xmappos(x1, *data), ft_ymappos(y0, *data), *data) == 1)
+	if (ft_checkwall(ft_mapx(x1, *data), ft_mapy(y0, *data), *data) == 1)
 		return (0);
-	if (ft_checkwall(ft_xmappos(x0, *data), ft_ymappos(y1, *data), *data) == 1)
+	if (ft_checkwall(ft_mapx(x0, *data), ft_mapy(y1, *data), *data) == 1)
 		return (0);
 	return (1);
 }
@@ -50,7 +50,7 @@ int ft_move(int keycode, t_data  *data)
 
 	angle = data->player.angle;
 	lado = 0.2;
-	paso = 10 / MINIMAPSIZE;
+	paso = 20 / MINIMAPSIZE;
 
 	if (keycode == FORWD)
 	{
@@ -82,7 +82,7 @@ int ft_move(int keycode, t_data  *data)
 	if (keycode == RIGHT)
 	{
 		data->player.angle = data->player.angle + lado;
-		if (data->player.angle >= 2 * PI)
+		if (data->player.angle >= (2 * PI))
 			data->player.angle = data->player.angle - (2 * PI);
 
 	}	
