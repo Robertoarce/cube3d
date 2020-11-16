@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 18:03:44 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/14 15:20:38 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/16 17:10:06 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,22 @@ static int	ft_raydist(t_data data, t_cube cube, double angle)
 	return (ft_get_distance(data, x, y, 0));
 }
 
-void		ft_drawray(t_data data, t_cube playercube, t_pixel *img)
+void		ft_raycast(t_data *data, t_cube playercube, t_pixel *img)
 {
-	int raydistance;
+	double	step;
+	double	aux;
+	int		raydistance;
+	int		counter;
 
-	raydistance = ft_raydist(data, playercube, data.player.angle);
-	ft_drawtail(data, img, 0x000FFFF00, raydistance);
+	counter = 0;
+	aux = data->player.angle;
+	step = PI / 180;
+	data->player.angle = ft_addangle(data->player.angle, -30 * step);
+	while (counter++ < 61)
+	{
+		data->player.angle = ft_addangle(data->player.angle, step);
+		raydistance = ft_raydist(*data, playercube, data->player.angle);
+		ft_drawtail(*data, img, 0x000FFFF00, raydistance);
+	}
+	data->player.angle = aux;
 }

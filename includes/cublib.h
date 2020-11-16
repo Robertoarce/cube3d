@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:44:04 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/14 15:16:37 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/16 16:15:55 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,18 +193,29 @@ int		ft_move(int keycode, t_data *data);
 int		ft_mainloop(int keycode, t_data *data);
 
 /*
-***					RAYCASTING
+***					DRAWING
 */
 
-void    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
+
 void	ft_drawcube(t_cube cube, t_pixel *img, int color);
 void	ft_drawline(t_cube cube, t_pixel *img, int color, int e2);
 void	ft_drawplayer(t_data *data, t_pixel *img);
 void	ft_drawminimap(t_data data, t_pixel *img);
-void	ft_drawray(t_data data, t_cube cube, t_pixel *img);
+
 void	ft_drawtail(t_data data, t_pixel *img, int color, int paso);
 
+/*
+***					DRAWING UTILS
+*/
 
+void    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
+double	ft_addangle(double angle, double paso);
+
+/*
+***					RAYCASTING
+*/
+
+void	ft_raycast(t_data *data, t_cube cube, t_pixel *img);
 
 /*
 ***					RAYCASTING UTILS 1 2 3
@@ -229,7 +240,7 @@ int		ft_calc_hy(int y, t_data data, int *wally);
 
 
 /*
-***					RAYCASTING MOVE PLAYER UTILS
+***					RAYCASTING  PLAYER UTILS
 */
 
 void	ft_createplayercube(t_data *data, int xdistance, int ydistance);

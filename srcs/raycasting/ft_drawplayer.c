@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 15:05:34 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/16 14:03:53 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/16 17:07:58 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	ft_drawplayer(t_data *data, t_pixel *img)
 {
 	ft_createplayercube(data, 0, 0);
 	ft_drawcube(data->player.cube, img, 0xFF00FF00);
-	ft_drawtail(*data, img, 0xAAAAAA00, 10);
-	ft_drawray(*data, data->player.cube, img);
+	ft_raycast(data, data->player.cube, img);
+	ft_drawtail(*data, img, 0xAAAAAA00, 30);
 }
