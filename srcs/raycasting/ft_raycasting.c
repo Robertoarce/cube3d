@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 18:03:44 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/16 17:10:06 by titorium         ###   ########.fr       */
+/*   Updated: 2020/12/03 12:36:55 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static int	ft_y(int wally, int y, t_data data, int counter)
 	return (0);
 }
 
-static int	ft_get_distance(t_data data, int x, int y, int counter)
+int		ft_get_distance(t_data data, int x, int y, int counter)
 {
-	int walx;
-	int waly;
 	int hx;
 	int hy;
+	int walx;
+	int waly;
 
 	walx = 0;
 	waly = 0;
@@ -58,7 +58,7 @@ static int	ft_get_distance(t_data data, int x, int y, int counter)
 	return (0);
 }
 
-static int	ft_raydist(t_data data, t_cube cube, double angle)
+int			ft_raydist(t_data data, t_cube cube, double angle)
 {
 	int		x;
 	int		y;
@@ -74,7 +74,7 @@ void		ft_raycast(t_data *data, t_cube playercube, t_pixel *img)
 {
 	double	step;
 	double	aux;
-	int		raydistance;
+	int	raydistance;
 	int		counter;
 
 	counter = 0;
@@ -85,7 +85,7 @@ void		ft_raycast(t_data *data, t_cube playercube, t_pixel *img)
 	{
 		data->player.angle = ft_addangle(data->player.angle, step);
 		raydistance = ft_raydist(*data, playercube, data->player.angle);
-		ft_drawtail(*data, img, 0x000FFFF00, raydistance);
+		ft_drawtail(*data, img, 0x000FFFF00,raydistance);
 	}
 	data->player.angle = aux;
 }

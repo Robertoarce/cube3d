@@ -6,10 +6,9 @@
 #    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 09:23:07 by titorium          #+#    #+#              #
-#    Updated: 2020/11/16 15:38:28 by titorium         ###   ########.fr        #
+#    Updated: 2020/12/02 10:17:03 by titorium         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME		=	cub3d
 
@@ -33,20 +32,25 @@ CFLAGS		=	-Wall -Wextra -Werror -g
 # --------- SOURCES ------------------- #
 
 # Main
+
 SRCS		= cub3d.c
 
 #	GNL
+
 SRCS		+=	gnl/get_next_line.c
 SRCS		+=	gnl/get_next_line_utils.c
 
 #	UTILS
+
 SRCS		+= utils/ft_outils.c
 
 #	PROCESS
+
 SRCS		+= process/ft_start.c
 SRCS		+= process/ft_finish.c
 
 #	PARSING
+
 SRCS		+=	parsing/ft_categorize.c
 SRCS		+=	parsing/ft_categorize_rfc.c
 SRCS		+=	parsing/ft_categorize_rest.c
@@ -63,9 +67,9 @@ SRCS		+=	raycasting/ft_draw_utils.c
 SRCS		+=	raycasting/ft_drawminimap.c
 SRCS		+=	raycasting/ft_drawplayer.c
 SRCS		+=	raycasting/ft_drawplayer_utils.c
+SRCS		+=	raycasting/ft_draw3d.c
 
 #	RAYCASTING
-
 
 SRCS		+=	raycasting/ft_mainloop.c
 SRCS		+=	raycasting/ft_moveplayer.c
@@ -74,13 +78,6 @@ SRCS		+=	raycasting/ft_raycasting_utils.c
 SRCS		+=	raycasting/ft_raycasting_utils2.c
 SRCS		+=	raycasting/ft_raycasting_utils3.c
 SRCS		+=	raycasting/ft_raycasting_utils4.c
-
-
-
-
-#cc main.c -L -lmlx -L./minilibx-linux/libmlx -lXext -lX11 -lm -lbsd minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a minilibx-linux/libmlx_x86_64.a
-#cc main.c -L -lmlx -L./minilibx-linux/libmlx -lXext -lX11 -lm -lbsd minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a minilibx-linux/libmlx_x86_64.a  -I./libft  ./srcs/ft_infos2.c -I./includes ./srcs/ft_infos3.c ./srcs/ft_infos.c ./srcs/ft_map2.c ./srcs/ft_map.c ./srcs/ft_outils.c ./srcs/ft_parsing.c ./srcs/get_next_line.c ./srcs/get_next_line_utils.c  libft.a
-
 
 
 # --------- INCLUDES  ------------------- #

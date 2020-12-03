@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:44:04 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/16 16:15:55 by titorium         ###   ########.fr       */
+/*   Updated: 2020/12/03 12:34:01 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,8 @@ typedef struct  s_pixel
 
 typedef struct    s_data
 {
-	void			*mlx_ptr;
-	void			*mlx_win;
+	void			*mlx;
+	void			*win;
 
 	char			*no;
 	char			*so;
@@ -209,13 +209,15 @@ void	ft_drawtail(t_data data, t_pixel *img, int color, int paso);
 */
 
 void    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
-double	ft_addangle(double angle, double paso);
+long double	ft_addangle(long double angle,long  double paso);
 
 /*
 ***					RAYCASTING
 */
 
 void	ft_raycast(t_data *data, t_cube cube, t_pixel *img);
+int		ft_get_distance(t_data data, int x, int y, int counter);
+int		ft_raydist(t_data data, t_cube cube, double angle);
 
 /*
 ***					RAYCASTING UTILS 1 2 3
@@ -237,14 +239,18 @@ int		ft_returndy(int dy);
 int		ft_calc_hx(int x, t_data data, int *wallx);
 int		ft_calc_hy(int y, t_data data, int *wally);
 
-
-
 /*
 ***					RAYCASTING  PLAYER UTILS
 */
 
 void	ft_createplayercube(t_data *data, int xdistance, int ydistance);
 void	ft_createplayercube2(t_data *data, int xdistance, int ydistance);
+
+/*
+***					RAYCASTING  3D
+*/
+
+void	ft_draw3d(t_data *data, t_pixel *img);
 
 
 #endif

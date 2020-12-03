@@ -6,7 +6,7 @@
 /*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:07:00 by titorium          #+#    #+#             */
-/*   Updated: 2020/11/13 13:11:36 by titorium         ###   ########.fr       */
+/*   Updated: 2020/11/19 18:06:34 by titorium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -57,15 +57,20 @@ int main()//int argc, char *argv[])
 ft_printit(data);
 
 
-    if ((data.mlx_ptr = mlx_init()) == NULL) // init mlx
+    if ((data.mlx = mlx_init()) == NULL) // init mlx
         return (ft_error("Error: Can't init mlx, check drivers"));
 
-    if ((data.mlx_win = mlx_new_window(data.mlx_ptr, data.r[0], data.r[1], "Cub3D")) == NULL) // create window
+    if ((data.win = mlx_new_window(data.mlx, data.r[0], data.r[1], "Cub3D")) == NULL) // create window
 		return (ft_error("Error: cannot open a new window"));
 
-/*--------------------------------------------*/
-	mlx_key_hook(data.mlx_win, ft_mainloop, &data);
+	if ((data.img.img = mlx_new_image(data.mlx,
+					data.r[0], data.r[1])) == NULL)
+		return (ft_error("Error: Can't init new image, check drivers"));
 
-	mlx_loop(data.mlx_ptr);
+
+/*--------------------------------------------*/
+	mlx_key_hook(data.win, ft_mainloop, &data);
+
+	mlx_loop(data.mlx);
 	return (0);
 }
