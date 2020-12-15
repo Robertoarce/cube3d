@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_main.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
+/*   By: rarce <rarce@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 10:16:57 by titorium          #+#    #+#             */
-/*   Updated: 2020/10/23 11:42:17 by titorium         ###   ########.fr       */
+/*   Updated: 2020/12/07 16:46:45 by rarce            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	ft_parseall(t_data *data)
 	int		r;
 	char	*line;
 
-	fd = open("infos.cub", O_RDONLY);
-	ft_init(&*data);
+	fd = open(data->cubextention, O_RDONLY);	
 	while ((r = get_next_line(fd, &line)) > 0)
 	{
 		if (ft_parse(line, &*data, 0) == -1)
