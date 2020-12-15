@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: titorium <rarce@student.42.fr>             +#+  +:+       +#+         #
+#    By: rarce <rarce@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 09:23:07 by titorium          #+#    #+#              #
-#    Updated: 2020/12/02 10:17:03 by titorium         ###   ########.fr        #
+#    Updated: 2020/12/15 11:46:40 by rarce            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,15 @@ SRCS		+=	gnl/get_next_line_utils.c
 
 SRCS		+= utils/ft_outils.c
 
-#	PROCESS
+#	PROCESS CLEANNING
 
 SRCS		+= process/ft_start.c
 SRCS		+= process/ft_finish.c
+
+#	INITIAL IMAGE & SAVE
+
+SRCS		+= save_cub_check/ft_save.c
+SRCS		+= save_cub_check/ft_cub.c
 
 #	PARSING
 
@@ -60,25 +65,26 @@ SRCS		+=	parsing/ft_mapcheck2.c
 SRCS		+=	parsing/ft_parsing_main.c
 SRCS		+=	parsing/ft_parsing_main2.c
 
-#	DRAWING
+#	DRAWING 2D
 
-SRCS		+=	raycasting/ft_geometry.c
-SRCS		+=	raycasting/ft_draw_utils.c
-SRCS		+=	raycasting/ft_drawminimap.c
-SRCS		+=	raycasting/ft_drawplayer.c
-SRCS		+=	raycasting/ft_drawplayer_utils.c
-SRCS		+=	raycasting/ft_draw3d.c
+SRCS		+=	drawing2d/ft_geometry.c
+SRCS		+=	drawing2d/ft_draw_utils.c
+SRCS		+=	drawing2d/ft_drawminimap.c
+SRCS		+=	drawing2d/ft_drawplayer.c
+SRCS		+=	drawing2d/ft_drawplayer_utils.c
+
+#	MECANICS
+
+SRCS		+=	mecanics/ft_moveplayer.c
+SRCS		+=	mecanics/ft_keypress.c
 
 #	RAYCASTING
 
-SRCS		+=	raycasting/ft_mainloop.c
-SRCS		+=	raycasting/ft_moveplayer.c
 SRCS		+=	raycasting/ft_raycasting.c
 SRCS		+=	raycasting/ft_raycasting_utils.c
 SRCS		+=	raycasting/ft_raycasting_utils2.c
 SRCS		+=	raycasting/ft_raycasting_utils3.c
 SRCS		+=	raycasting/ft_raycasting_utils4.c
-
 
 # --------- INCLUDES  ------------------- #
 

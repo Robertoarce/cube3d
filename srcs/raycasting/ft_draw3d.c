@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw3d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: titorium <rarce@student.42.fr>             +#+  +:+       +#+        */
+/*   By: rarce <rarce@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 13:24:00 by titorium          #+#    #+#             */
-/*   Updated: 2020/12/03 16:27:54 by titorium         ###   ########.fr       */
+/*   Updated: 2020/12/07 17:50:49 by rarce            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ static void ft_drawstripplane(int place, t_pixel *img, t_data data, long double 
 	(void) ft_avgray;
 
 	//raydistance = raydistance * (cosl((fixed) )) - 3e-4 ;
-	raydistance = raydistance * ((cosl(pa)*cosl(data.player.angle)))+ raydistance*((sin(pa)*sin(data.player.angle))) ;
+	raydistance = sqrt(raydistance) * ((cosl(pa)*cosl(data.player.angle)))+ raydistance*((sin(pa)*sin(data.player.angle))) ;
 	lineHeight =  (32 * data.r[1] / raydistance);
 	
 //	if ((place > 1 && place < 7 )|| (place > 1135 && place < 1150))
